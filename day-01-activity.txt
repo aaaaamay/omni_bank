@@ -1,11 +1,13 @@
-1. Identifica las entidades 
-    -Clientes 
-    -Cuentas
-    -Transacciones
-2. Extrae los Requerimientos Funcionales 
-    -Clientes: Registrar nombre completo, correo electrónico único, número de telefono, fecha de nacimiento y su número de identificación
-    fiscal (Tax ID), el cual no se puede repetir. 
-    -Cuentas: Registrar el número de cuenta, la moneda, tipo de cuenta, saldo actual y límite de crédito. 
-    -Transacciones: Registrar movimiento de dinero de cuenta origen a cuenta destino, guardar el monto, tipo de transacción y fecha exacta.
-3. Extrae Restricciones Clave
-    Su número de identificación fiscal (Tax ID).
+1. Lista de Entidades:
+
+Clientes (Customers)
+Cuentas (Accounts)
+Transacciones (Transactions)
+2. Requerimientos Funcionales (RF):
+
+RF1: El sistema debe almacenar de los Clientes: nombre, correo, teléfono, fecha de nacimiento y Tax ID.
+RF2: El sistema debe almacenar de las Cuentas: número de cuenta, moneda, tipo de cuenta, saldo actual y límite de crédito, y a qué cliente pertenecen.
+RF3: El sistema debe almacenar de las Transacciones: cuenta origen, cuenta destino, monto, tipo de transacción y fecha/hora exacta.
+3. Restricción de unicidad:
+
+El sistema no debe permitir que dos clientes tengan el mismo Tax ID o número de identificación fiscal (Debe ser UNIQUE).
