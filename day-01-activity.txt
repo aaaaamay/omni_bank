@@ -1,0 +1,11 @@
+1. Identifica las entidades 
+    -Clientes 
+    -Cuentas
+    -Transacciones
+2. Extrae los Requerimientos Funcionales 
+    -Clientes: Registrar nombre completo, correo electrónico único, número de telefono, fecha de nacimiento y su número de identificación
+    fiscal (Tax ID), el cual no se puede repetir. 
+    -Cuentas: Registrar el número de cuenta, la moneda, tipo de cuenta, saldo actual y límite de crédito. 
+    -Transacciones: Registrar movimiento de dinero de cuenta origen a cuenta destino, guardar el monto, tipo de transacción y fecha exacta.
+3. Extrae Restricciones Clave
+    Su número de identificación fiscal (Tax ID).
