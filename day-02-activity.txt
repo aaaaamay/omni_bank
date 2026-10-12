@@ -1,0 +1,8 @@
+[Clientes] 1 -------------------------- N  [Cuentas]   N -------------------------- N [Transacciones]
+- id_cliente (PK)                          - id_cuenta (PK)                           - id_transaccion (PK)
+- nombre                                   - id_cliente(FK)                           - id_cuenta (FK)
+- correo electrónico                       - número de cuenta                         - movimiento
+- número de telefono                       - moneda                                   - monto
+- fecha de nacimiento                      - tipo de cuenta                           - tipo de transacción
+- Tax ID                                   - saldo                                    - fecha
+                                           - Limite crédito
