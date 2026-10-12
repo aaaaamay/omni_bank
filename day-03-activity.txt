@@ -1,0 +1,31 @@
+Transacción_id | fecha_tx   | Cliente_tax_id | Cliente_nombre | Cliente_correo | Cliente_numero | Cuenta_numero | moneda | tipo_cuenta | saldo_actual | monto_tx | sucursal_codigo | sucursal_direccion
+TX- 0001       | 20/07/2026 | TAX - 9911     | Roberto Soto   | rob@mail.com   | 555-9011       | CTA - 100     | USD    | Checking    | 1500.00      | +500.00  | S-CDMX          | Av. Juarez #100
+TX- 0002       | 21/07/2026 | TAX - 9911     | Roberto Soto   | rob@mail.com   | 555-9011       | CTA - 100     | USD    | Checking    | 1300.00      | -200.00  | S-CDMX          | Av. Juarez #100
+
+[Cliente]
+- id_cliente (PK)           ¿Por qué la información como Cliente_tax_id, cliente_nombre y sucursal_direccion viola la 2NF y 3NF si la llave primaria es transaccion_id?
+- nombre                    Porque ninguna de las celdasde información depende de transaccion_id por lo que no hay necesidad de que se encuentren en la misma tabla.
+- correo
+- numero
+- Tax ID
+
+[Cuenta]
+- id_cuenta (PK)
+- numero_cuenta 
+- tipo_cuenta 
+- moneda 
+- saldo_actual
+
+[Transaccion]
+- id_transaccion (PK)
+- cuenta_origen (FK)
+- cuenta_destino (FK)
+- tipo_transaccion 
+- monto
+- fecha 
+
+[Sucursal]
+- id_sucursal (PK)
+- nombre 
+- codigo 
+- dirección 
