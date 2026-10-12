@@ -1,0 +1,18 @@
+[Clientes] 1 -------------------------- N [Cuentas]
+-id_cliente (PK)(UUID)                    - id_cuenta (PK)(UUID)
+- nombre                                  - id_cliente (FK)
+- correo (Debe ser único)                 - numero de cuenta    
+- telefono                                - moneda 
+- fecha_nacimiento                        - tipo de cuenta 
+- Tax ID (Debe ser único)                 - saldo (no puede ser negativo)
+- Estado (Activo, Inactivo)               - limite de crédito
+                                          - tiempo_actualización 
+
+
+[Cuenta origen] 1 -------------------------- N  [Transacciones]
+                                                - id_transaccion (PK)(UUID)
+                                                - cuenta_origen (FK)
+                                                - cuenta_destino (FK)
+                                                - monto (no puede ser negativo)
+[Cuenta destino] 1 -------------------------- N - tipo_transaccion 
+                                                - fecha
