@@ -1,0 +1,20 @@
+1. La catástrofe Empresarial en Producción 
+Si consideramos lo que el nuevo líder del QA Testing propone y habilitamos el ON DELETE CASCADE a las tablas del banco, estamos cometiendo 
+un gravisimo error pues, la base de datos tendría un poder muy peligroso. En cualquier situación, ya sea que un empleado cometió un error 
+o por razones de pruebas, borra a un cliente, no solo borraría a la persona, sino que desaparecerían todas sus cuentas, sus préstamos y todo
+el dinero que movió. Si esto sucediera, el banco se quedaría sin saber cuánto dinero tenía esa persona, si debía algo o a quién le transfirió,
+generando un descuadre contable inmediato. 
+
+2. El Rastro Fiscal y Auditoría Contable Inalineable 
+En el mundo de los bancos y las finanzas existen leyes muy estrictas. Las tablas donde se guardan los movimientos y pagos son como un registro
+oficial, no se puede borrar nada de lo que ya pasó. Si un cliente decide cerrar su cuenta y no abrir una nueva con el banco nunca más, el banco
+está obligado a guardar el registro de cualquier movimiento por si es necesario que las autoridades revisen el historial para investigar 
+fraudes o impuestos. Borrar un registro con un DELETE en un banco es básicamente ilegal. 
+
+3. El Estándar de la Baja Lógica (La Alternativa Correcta)
+En lugar de borrar fisicamente las filas de la base de datos con un DELETE, lo que se debe de hacer es usar una baja lógica. Esto se refiere 
+a que nunca se elimina a los clientes y sus cuentas, solo se desactivan.
+
+    - En la base de datos simplemente se cambia el estado de una cuenta con is_active.
+    - El cliente ya no podrá usar la app ni hacer movimientos porque el sistema verá que se encuentra inactivo, pero todo su historial 
+    seguirá guardado de forma segura.
