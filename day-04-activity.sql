@@ -1,28 +1,19 @@
-CREATE TYPE moneda AS ENUM ('USD', 'EUR', 'MXN');
-CREATE TYPE cuentas AS ENUM ('CHECKING', 'SAVINGS', 'CREDIT');
-CREATE TYPE movimiento_transaccional AS ENUM ('DEPOSIT', 'WITHDRAWAL', 'TRANSFER');
+1. Creación de Tipos Enumerados Bancarios (ENUMs)
+-- Monedas admitidas
+CREATE TYPE core.tipo_moneda AS ENUM ('USD', 'EUR', 'MXN', 'GBP');
 
-CREATE DOMAIN dinero_positivo AS NUMERIC (10, 2)
-    CHECK (VALUE > = 0.00);
+-- Tipos de cuentas de clientes
+CREATE TYPE core.tipo_cuenta AS ENUM ('CHECKING', 'SAVINGS', 'CREDIT');
 
-CREATE DOMAIN correo_formaro AS VARCHAR(150)
-    CHECK (VALUE ~* '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$');
+-- Categorizaciones transaccionales permitidas
+CREATE TYPE core.tipo_transaccion AS ENUM ('DEPOSIT', 'WITHDRAWAL', 'TRANSFER');
 
-[Clientes]
-- cliente_id UUID (PK)
-- nombre VARCHAR(100)                   -- Para todas las Llaves Primarias (PK) y las foráneas (FK) se usarán UUID pues para mayor seguridad se crean
-- correo: correo_formaro                   ids unicos universales.
 
-[Cuentas]
-- numero_cuenta (PK)
-- cliente_id (FK) UUID
-- sucursal_id (FK) UUID
-- tipo_moneda: moneda 
-- tipo_cuenta: cuentas 
-- saldo_actual: dinero_positivo
+2. Especificación Relacional Corregida (Diccionario y Campos)
+Tabla Cuentas (Corrección de atributos críticos):
 
-[Transacciones]
-- transaccion_id (PK) UUID
-- numero_cuenta (FK)
-- fecha_tx: TIMESTAMPZ
-- monto: dinero_positivo
+saldo_actual: NUMERIC(15, 2) (Sustituye por completo al erróneo e impreciso FLOAT(8) con 15 dígitos de longitud en total y dos decimales bancarios inviolables y exactos).
+updated_at: TIMESTAMPTZ (Provee protección en timestamps preservados bajo Tiempo Universal UTC).
+Tipo de Llaves para Clientes, Cuentas y Transacciones:
+
+Todo atributo utilizado en función de Llaves Primarias (PK) y Llaves Foráneas (FK) portará inexorablemente el tipo nativo UUID de 128-bits. Su uso anula ataques de adivinanza o enumeración secuencial en los APIs de consulta del banco e incrementa el aislamiento distribuido.
