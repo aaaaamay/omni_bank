@@ -1,0 +1,9 @@
+1. Identifica la regla de consistencia matemática 
+El saldo de los clientes no debe quedar en números negativos.
+
+2. Identifica la regla de auditoría (Soft Delete)
+No se deben eliminar los clientes una vez que estos hayan sido insertados. Si el cliente llega a cerrar su cuenta, simplemente 
+se marcará como "Inactivo".
+
+3. Identifica la regla de rastreo de tiempo (Timestamps)
+En la base de datos, cada vez que una fila en la tabla de cuentas es modificada, es necesario saber la fecha y hora de la ultima actualización.
