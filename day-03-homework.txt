@@ -1,0 +1,9 @@
+El auditor junior tiene razón en la parte teórica, guardar la columna saldo_actual es guardar un dato derivado, porque ese saldo se obtiene sumando
+y restando las transacciones de la cuenta. Este valor no debería estar ahí para evitar repetir información o correr el riesgo de que el saldo no coincida 
+con el historial de movimientos. 
+
+Si un cliente tiene 250,000 transacciones y calculamos su saldo desde cero con un SUM() cada vez que entra a la aplicación, el servidor tendría que 
+revisar y sumar miles de registros. Esto saturaría el procesador, haría que la aplicación tarde varios segundos en responder y congelaría la experiencia
+del usuario. Por eso, en la banca mantenemos la columna saldo_actual como una desnormalizacion controlada, preferimos guardar el valor ya calculado
+para responder en milisegundos y nos aseguramos de no perder la precisión programando reglas automaticas en la base de datos para que el saldo se 
+actualice exactamente al mismo tiempo que se registra cada movimiento.
