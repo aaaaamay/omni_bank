@@ -15,4 +15,4 @@ WHERE email LIKE '%@email.com'
 -- como si simplemente no existiera por lo que nunca va a devolver nada
 SELECT account_id, tx_type, amount, COALESCE(description, 'COBRO INSTITUCIONAL O COMISION - SIN RECEPTOR') AS descripcion_visible
 FROM core.transactions 
-WHERE description IS NULL OR tx_type = 'WITHDRAWAL';
+WHERE description IS NULL OR tx_type = 'WITHDRAWAL'; 
